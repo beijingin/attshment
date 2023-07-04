@@ -416,6 +416,7 @@ if mode == "修改记录":
             filpth = get_record_by_id(id)[-3]
             if filpth:
                 filpth = r'{}'.format(filpth)
+                filna = filpth.split('/')[1]
                 down_btn = st.download_button(
                         label="-----------下载附件-----------",
                         data=open(filpth, "rb"),
