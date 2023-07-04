@@ -269,7 +269,7 @@ st.title("文件信息系统系统")
 #侧边栏
 st.sidebar.header("医工科文件信息系统")
 mode = st.sidebar.selectbox("附件管理", ["新增记录", "查看记录", "检索记录","图表统计展示"])
-st.image("./banner1.png",use_column_width='always')
+# st.image("./banner1.png",use_column_width='always')
 # 上传文件
 ############################################# 第一页 ############################################
 if mode == "新增记录":
