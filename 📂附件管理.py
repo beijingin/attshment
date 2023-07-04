@@ -36,11 +36,11 @@ import plotly.express as px
 #整体配置
 
 st.set_page_config(
-    page_title="五中心医工科文件信息系统",
+    page_title="文件信息系统",
     page_icon='🌐',
     layout="wide",
     menu_items={
-    'Get Help': 'https://github.com/',
+    'Get Help': 'https://github.com/Lijiakuan/attsh/',
     'About': '关于本系统: **由李家宽制作**'
 }
 )
@@ -268,7 +268,7 @@ def get_image_download_link(img, filename):
 
 st.title("文件信息系统系统")
 #侧边栏
-st.sidebar.header("医工科文件信息系统")
+st.sidebar.header("文件信息系统")
 mode = st.sidebar.selectbox("附件管理", ["新增记录", "查看记录", "检索记录","图表统计展示"])
 # st.image("./banner1.png",use_column_width='always')
 # 上传文件
