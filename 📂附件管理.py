@@ -401,16 +401,17 @@ if mode == "查看记录":
         
     #下载附件
     with cl2:
-        if len(selected_records) == 1:
-            idr2 = int(selected_records[0])
-            filpth = get_record_by_id(idr2)[-2]
-            filpth1 = r'{}'.format(filpth)
-            filna = filpth1.split('/')[1]
-            down_btn = st.download_button(
-                    label="下载",
-                    data=open(filpth, "rb"),
-                    file_name=filna
-                    )
+        if selected_records:
+            if len(selected_records) == 1:
+                idr2 = int(selected_records[0])
+                filpth = get_record_by_id(idr2)[-2]
+                filpth1 = r'{}'.format(filpth)
+                filna = filpth1.split('/')[1]
+                down_btn = st.download_button(
+                        label="下载",
+                        data=open(filpth, "rb"),
+                        file_name=filna
+                        )
         
     #编辑记录
     
