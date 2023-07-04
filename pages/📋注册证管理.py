@@ -29,7 +29,7 @@ def create_connection1():
     return conn
 
 #创建数据库
-@st.cache_resource
+# @st.cache_resource
 def create_table1():
     conn = create_connection1()
     c = conn.cursor()
