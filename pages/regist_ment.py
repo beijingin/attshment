@@ -196,10 +196,10 @@ def display_file(file_path):
 def export_records(records):
     datestr = datetime.datetime.now()
     date_str = datestr.strftime('%Y_%m_%d')
-    # expfilpth = f"downloads\记录{date_str}.xlsx"
+    # expfilpth = f"downloads/记录{date_str}.xlsx"
 
     df = pd.DataFrame(records, columns=["id", "文件标题","文件总页数","文件上报人","上报人联系方式","所属组", "文件接收人",  "文件保管人", "审批完成日期", "文件摘要", "文件名", "文件存储路径","备注"])
-    df.to_excel(f"downloads\记录{date_str}.xlsx", index=False)
+    df.to_excel(f"downloads/记录{date_str}.xlsx", index=False)
     # return expfilpth
 #导出选中的记录功能
 def export_selected_records(records):
@@ -207,9 +207,9 @@ def export_selected_records(records):
     # print(serecords) 
     datestr = datetime.datetime.now()
     date_str = datestr.strftime('%Y_%m_%d')
-    # expfilpth = f"downloads\记录{date_str}.xlsx"
+    # expfilpth = f"downloads/记录{date_str}.xlsx"
     df = pd.DataFrame(serecords, columns=["id", "文件标题","文件总页数","文件上报人","上报人联系方式","所属组", "文件接收人",  "文件保管人", "审批完成日期", "文件摘要", "文件名", "文件存储路径","备注"])
-    df.to_excel(f"downloads\记录{date_str}.xlsx", index=False)    
+    df.to_excel(f"downloads/记录{date_str}.xlsx", index=False)    
 
 def get_image_download_link(img, filename):
     buffered = BytesIO()
@@ -416,7 +416,7 @@ if mode == "修改记录":
             filpth = get_record_by_id(id)[-3]
             if filpth:
                 filpth = r'{}'.format(filpth)
-                filna = filpth.split('\\')[1]
+                filna = filpth.split('/')[1]
                 down_btn = st.download_button(
                         label="-----------下载附件-----------",
                         data=open(filpth, "rb"),
