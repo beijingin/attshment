@@ -218,10 +218,10 @@ def display_file(file_path):
 def export_records(records):
     datestr = datetime.datetime.now()
     date_str = datestr.strftime('%Y_%m_%d')
-    # expfilpth = f"downloads\记录{date_str}.xlsx"
+    # expfilpth = f"downloads/记录{date_str}.xlsx"
 
     df = pd.DataFrame(records, columns=["id", "文件标题","文件总页数","文件上报人","上报人联系方式","所属组", "文件接收人",  "文件保管人", "审批完成日期", "文件摘要", "文件名", "文件存储路径","备注"])
-    df.to_excel(f"downloads\记录{date_str}.xlsx", index=False)
+    df.to_excel(f"downloads/记录{date_str}.xlsx", index=False)
     # return expfilpth
 #导出选中的记录功能
 def export_selected_records(records):
@@ -229,9 +229,9 @@ def export_selected_records(records):
     # print(serecords) 
     datestr = datetime.datetime.now()
     date_str = datestr.strftime('%Y_%m_%d')
-    # expfilpth = f"downloads\记录{date_str}.xlsx"
+    # expfilpth = f"downloads/记录{date_str}.xlsx"
     df = pd.DataFrame(serecords, columns=["id", "文件标题","文件总页数","文件上报人","上报人联系方式","所属组", "文件接收人",  "文件保管人", "审批完成日期", "文件摘要", "文件名", "文件存储路径","备注"])
-    df.to_excel(f"downloads\记录{date_str}.xlsx", index=False)    
+    df.to_excel(f"downloads/记录{date_str}.xlsx", index=False)    
     
 # 导出Excel按钮
 # def export_excel():
@@ -373,7 +373,7 @@ if mode == "查看记录":
             export_selected_records(selected_records)
             datestr = datetime.datetime.now()
             date_str = datestr.strftime('%Y_%m_%d')
-            expfilpth = f"downloads\记录{date_str}.xlsx"
+            expfilpth = f"downloads/记录{date_str}.xlsx"
             exfilname = f"记录{date_str}.xlsx"
             exp_btn = st.download_button(
                             label="下载记录",
@@ -405,7 +405,7 @@ if mode == "查看记录":
             idr2 = int(selected_records[0])
             filpth = get_record_by_id(idr2)[-2]
             filpth1 = r'{}'.format(filpth)
-            filna = filpth1.split('\\')[1]
+            filna = filpth1.split('\/')[1]
             down_btn = st.download_button(
                     label="下载",
                     data=open(filpth, "rb"),
@@ -552,7 +552,7 @@ if mode == "检索记录":
         if st.button("导出全部记录",on_click=export_records(records)):
             datestr = datetime.datetime.now()
             date_str = datestr.strftime('%Y_%m_%d')
-            expfilpth = f"downloads\记录{date_str}.xlsx"
+            expfilpth = f"downloads/记录{date_str}.xlsx"
             exfilname = f"记录{date_str}.xlsx"
             exp_btn = st.download_button(
                             label="下载记录",
@@ -566,7 +566,7 @@ if mode == "检索记录":
                 export_selected_records(selected_records)
                 datestr = datetime.datetime.now()
                 date_str = datestr.strftime('%Y_%m_%d')
-                expfilpth = f"downloads\记录{date_str}.xlsx"
+                expfilpth = f"downloads/记录{date_str}.xlsx"
                 exfilname = f"记录{date_str}.xlsx"
                 exp_btn = st.download_button(
                                 label="下载记录",
@@ -598,7 +598,7 @@ if mode == "检索记录":
                 idr2 = int(selected_records[0])
                 filpth = get_record_by_id(idr2)[-2]
                 filpth1 = r'{}'.format(filpth) 
-                filna = filpth1.split('\\')[1]
+                filna = filpth1.split('\/')[1]
                 # print()
                 down_btn = st.download_button(
                         label="下载",
