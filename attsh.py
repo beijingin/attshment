@@ -405,7 +405,7 @@ if mode == "查看记录":
             idr2 = int(selected_records[0])
             filpth = get_record_by_id(idr2)[-2]
             filpth1 = r'{}'.format(filpth)
-            filna = filpth1.split('\/')[1]
+            filna = filpth1.split('/')[1]
             down_btn = st.download_button(
                     label="下载",
                     data=open(filpth, "rb"),
@@ -598,7 +598,7 @@ if mode == "检索记录":
                 idr2 = int(selected_records[0])
                 filpth = get_record_by_id(idr2)[-2]
                 filpth1 = r'{}'.format(filpth) 
-                filna = filpth1.split('\/')[1]
+                filna = filpth1.split('/')[1]
                 # print()
                 down_btn = st.download_button(
                         label="下载",
