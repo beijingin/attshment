@@ -6,3 +6,4 @@ Pillow==10.0.0
 plotly==5.14.1
 PyPDF2==3.0.1
 streamlit==1.22.0
+st_aggrid
