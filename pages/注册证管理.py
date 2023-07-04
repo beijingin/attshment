@@ -231,7 +231,7 @@ if mode == "新增记录":
     # df = pd.DataFrame(records,columns=["id", "总医院序号","产品名称","规格型号","生产厂家","产品价格", "注册证号",  "注册证名称", "产品类型","附件名", "附件存放地址", "备注", "记录创建时间"])
     df = pd.DataFrame(records,columns=["id", "mhostnum", "product_name", "spec_type", "factory", "price", "regist_number", "regist_name", "product_type", "file_name", "file_path", "remark1", "record_time"])
     # df = df.fillna('None')
-    if len(df)>1:
+    if len(df)>=1:
         maxid = df.iat[-1,0]
     else:
         maxid = 0
