@@ -200,7 +200,8 @@ def display_file(file_path):
             st.write(text)
         except:
             st.warning("预览的PDF文档不能为扫描件！！")
-        
+    elif file_type in ["mp4","MP4","rmvb","RMVB"]:
+        st.video(file_path)       
 
     elif file_type in ["txt", "TXT","csv","CSV"]:
         with open(file_path, "rb") as f:
