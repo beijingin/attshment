@@ -221,7 +221,7 @@ def get_image_download_link(img, filename):
     
 st.title("文件信息系统系统")
 #侧边栏
-st.sidebar.header("医工科注册证管理系统")
+st.sidebar.header("注册证管理系统")
 mode = st.sidebar.selectbox("注册证管理", ["新增记录", "查看记录", "修改记录"])
 # st.image("./banner1.png",use_column_width='always')
 # 上传文件
