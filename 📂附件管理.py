@@ -402,7 +402,7 @@ if mode == "查看记录":
         
     #下载附件
     with cl2:
-        if len(records) >= 1::
+        if len(records) >= 1:
             if len(selected_records) == 1:
                 idr2 = int(selected_records[0])
                 filpth = get_record_by_id(idr2)[-2]
