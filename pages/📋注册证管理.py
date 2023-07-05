@@ -350,6 +350,8 @@ if mode == "修改记录":
     # df = df.fillna('None')
     #df = df.rename(columns=rennames)
     index = len(df)
+    if st.checkbox("查看对照列名称"):
+        st.write(rennames)
     # Initiate the streamlit-aggrid widget
     gb = GridOptionsBuilder.from_dataframe(df)
     gb.configure_side_bar()
