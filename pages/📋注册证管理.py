@@ -348,7 +348,7 @@ if mode == "修改记录":
                 "price":"产品价格", "regist_number":"注册证号", "regist_name":"注册证名称", "product_type":"产品类型", 
                 "file_name":"附件名", "file_path":"附件存放地址", "remark1":"备注", "record_time":"记录创建时间"}
     # df = df.fillna('None')
-    df = df.rename(columns=rennames)
+    #df = df.rename(columns=rennames)
     index = len(df)
     # Initiate the streamlit-aggrid widget
     gb = GridOptionsBuilder.from_dataframe(df)
