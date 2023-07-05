@@ -402,7 +402,7 @@ if mode == "查看记录":
         
     #下载附件
     with cl2:
-        if selected_records:
+        if len(records) >= 1::
             if len(selected_records) == 1:
                 idr2 = int(selected_records[0])
                 filpth = get_record_by_id(idr2)[-2]
@@ -418,68 +418,69 @@ if mode == "查看记录":
     
     with cl4:
         # if st.button("编辑记录"):
-        if len(selected_records) == 1:                 
-            idr2 = int(selected_records[0])
-            row_selected = get_record_by_id(idr2)
-            with st.container():
-                my_form1 = st.form(key='my_form')
-                my_form1.header("修改记录")
-                # st.write(row[2])
-                
-                uploaded_files = my_form1.file_uploader("请上传附件", accept_multiple_files=True)
-                title = my_form1.text_input("文件标题", value=row_selected[1])
-                page_count = my_form1.number_input(
-                    "文件页数", min_value=1, value=row_selected[2], step=1)
-                creator = my_form1.text_input("文件上报人", value=row_selected[3])
-                contact = my_form1.text_input("上报人联系方式", value=row_selected[4])
-                hgroup = my_form1.text_input("所属组别", value=row_selected[5])
-                file_reciper = my_form1.text_input("文件接收人", value=row_selected[6])
-                file_saver = my_form1.text_input("文件保管人", value=row_selected[7])
-                entry_time2 = my_form1.text_input("审批完成时间",value=row_selected[8])
-                try:
-                    entry_time2 = datetime.datetime.strptime(entry_time2, "%Y-%m-%d") 
-                except ValueError:
-                    entry_time2 =  entry_time2[:-9]      
-                    entry_time2 = datetime.datetime.strptime(entry_time2, "%Y-%m-%d")                       
-                summary = my_form1.text_input("文件摘要", value=row_selected[9])
-
-                remarks = my_form1.text_input("备注信息", value=row_selected[12])
-                
-                if uploaded_files:
-                    for uploaded_file in uploaded_files:
-                        save_uploaded_file(uploaded_file,UPLOAD_FOLDER)
-                    fil1 = uploaded_files[0]
-                    fname = st.write(f"文件名:{fil1.name}")
-                    fpath = os.path.join(UPLOAD_FOLDER, fil1.name)
-                else:
-                    fname = my_form1.write(f"文件名:{row_selected[10]}")
-                    fpath = row_selected[11]
-                submit_button = my_form1.form_submit_button("提交修改")
-                if  submit_button:
-                    # print(submit_button)
-                    new_record = {
-                        "title":title,
-                        "page_count":page_count,
-                        "creator":creator,
-                        "contact": contact,
-                        "hgroup":hgroup,
-                        "file_reciper":file_reciper,
-                        "file_saver":file_saver,
-                        "entry_time": entry_time2,
-                        "summary": summary,
-                        "file_name": fname,
-                        "file_path": fpath,
-                        "remarks": remarks                        
-                    }
-                    update_record(idr2, new_record["title"],new_record["page_count"], new_record["creator"], new_record["contact"], new_record["hgroup"]
-                                  , new_record["file_reciper"], new_record["file_saver"], new_record["entry_time"], new_record["summary"], new_record["file_name"], new_record["file_path"], new_record["remarks"])
-                    # print(idr2, new_record["name"],new_record["title"], new_record["entry_time"], new_record["creator"], new_record["contact"]
-                    #                 , new_record["summary"], new_record["page_count"], new_record["remarks"], new_record["filepath"])
-                    st.success("记录已更新") 
-                    time.sleep(2)
-                    st.experimental_rerun()
-        elif len(selected_records) > 1: 
-            st.warning("🚨请选择一条记录进行修改🚨")
+        if len(records) >= 1:
+            if len(selected_records) == 1:                 
+                idr2 = int(selected_records[0])
+                row_selected = get_record_by_id(idr2)
+                with st.container():
+                    my_form1 = st.form(key='my_form')
+                    my_form1.header("修改记录")
+                    # st.write(row[2])
+                    
+                    uploaded_files = my_form1.file_uploader("请上传附件", accept_multiple_files=True)
+                    title = my_form1.text_input("文件标题", value=row_selected[1])
+                    page_count = my_form1.number_input(
+                        "文件页数", min_value=1, value=row_selected[2], step=1)
+                    creator = my_form1.text_input("文件上报人", value=row_selected[3])
+                    contact = my_form1.text_input("上报人联系方式", value=row_selected[4])
+                    hgroup = my_form1.text_input("所属组别", value=row_selected[5])
+                    file_reciper = my_form1.text_input("文件接收人", value=row_selected[6])
+                    file_saver = my_form1.text_input("文件保管人", value=row_selected[7])
+                    entry_time2 = my_form1.text_input("审批完成时间",value=row_selected[8])
+                    try:
+                        entry_time2 = datetime.datetime.strptime(entry_time2, "%Y-%m-%d") 
+                    except ValueError:
+                        entry_time2 =  entry_time2[:-9]      
+                        entry_time2 = datetime.datetime.strptime(entry_time2, "%Y-%m-%d")                       
+                    summary = my_form1.text_input("文件摘要", value=row_selected[9])
+    
+                    remarks = my_form1.text_input("备注信息", value=row_selected[12])
+                    
+                    if uploaded_files:
+                        for uploaded_file in uploaded_files:
+                            save_uploaded_file(uploaded_file,UPLOAD_FOLDER)
+                        fil1 = uploaded_files[0]
+                        fname = st.write(f"文件名:{fil1.name}")
+                        fpath = os.path.join(UPLOAD_FOLDER, fil1.name)
+                    else:
+                        fname = my_form1.write(f"文件名:{row_selected[10]}")
+                        fpath = row_selected[11]
+                    submit_button = my_form1.form_submit_button("提交修改")
+                    if  submit_button:
+                        # print(submit_button)
+                        new_record = {
+                            "title":title,
+                            "page_count":page_count,
+                            "creator":creator,
+                            "contact": contact,
+                            "hgroup":hgroup,
+                            "file_reciper":file_reciper,
+                            "file_saver":file_saver,
+                            "entry_time": entry_time2,
+                            "summary": summary,
+                            "file_name": fname,
+                            "file_path": fpath,
+                            "remarks": remarks                        
+                        }
+                        update_record(idr2, new_record["title"],new_record["page_count"], new_record["creator"], new_record["contact"], new_record["hgroup"]
+                                      , new_record["file_reciper"], new_record["file_saver"], new_record["entry_time"], new_record["summary"], new_record["file_name"], new_record["file_path"], new_record["remarks"])
+                        # print(idr2, new_record["name"],new_record["title"], new_record["entry_time"], new_record["creator"], new_record["contact"]
+                        #                 , new_record["summary"], new_record["page_count"], new_record["remarks"], new_record["filepath"])
+                        st.success("记录已更新") 
+                        time.sleep(2)
+                        st.experimental_rerun()
+            elif len(selected_records) > 1: 
+                st.warning("🚨请选择一条记录进行修改🚨")
                 
     #删除记录
     with cl3:
