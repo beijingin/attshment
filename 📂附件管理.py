@@ -409,7 +409,7 @@ if mode == "查看记录":
                 filpth1 = r'{}'.format(filpth)
                 filna = filpth1.split('/')[1]
                 down_btn = st.download_button(
-                        label="下载",
+                        label="下载附件",
                         data=open(filpth, "rb"),
                         file_name=filna
                         )
